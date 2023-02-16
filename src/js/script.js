@@ -89,6 +89,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion() {
@@ -174,6 +175,23 @@
 
             }
           }
+          //find images with class .paramID-optionID
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          // check if product has an image
+          if (optionImage) {
+
+            // check if there is a param (paramId, optionId)
+            if (formData[paramId] && formData[paramId].includes(optionId)) {
+              //add class active
+              optionImage.classList.add('active');
+            } else {
+              //remove classactive
+              optionImage.classList.remove('active');
+            }
+          }
+
+
+
         }
         // update calculated price in the HTML
         thisProduct.priceElem.innerHTML = price;
