@@ -204,143 +204,23 @@
   ],
   "orders": [
     {
-      "address": null,
-      "phone": {},
-      "totalPrice": 38,
-      "subtotalPrice": 18,
-      "totalNumber": 2,
+      "address": "dwe",
+      "phone": "5046504783",
+      "totalPrice": 29,
+      "subtotalPrice": 9,
+      "totalNumber": 1,
       "deliveryFee": 20,
       "products": [
         {
-          "id": "salad",
-          "amount": 2,
-          "price": 18,
+          "id": "cake",
+          "amount": 1,
+          "price": 9,
           "priceSingle": 9,
-          "name": "Nonno Alberto's Salad",
-          "params": {
-            "ingredients": {
-              "label": "Ingredients",
-              "options": {
-                "cucumber": "Cucumber",
-                "tomatoes": "Tomatoes",
-                "olives": "Olives",
-                "herbs": "Fresh herbs"
-              }
-            }
-          }
+          "name": "Zio Stefano's Doughnut",
+          "params": {}
         }
       ],
       "id": 1
-    },
-    {
-      "address": null,
-      "phone": {},
-      "totalPrice": 38,
-      "subtotalPrice": 18,
-      "totalNumber": 2,
-      "deliveryFee": 20,
-      "products": [
-        {
-          "id": "salad",
-          "amount": 2,
-          "price": 18,
-          "priceSingle": 9,
-          "name": "Nonno Alberto's Salad",
-          "params": {
-            "ingredients": {
-              "label": "Ingredients",
-              "options": {
-                "cucumber": "Cucumber",
-                "tomatoes": "Tomatoes",
-                "olives": "Olives",
-                "herbs": "Fresh herbs"
-              }
-            }
-          }
-        }
-      ],
-      "id": 2
-    },
-    {
-      "address": null,
-      "phone": {},
-      "totalPrice": 38,
-      "subtotalPrice": 18,
-      "totalNumber": 2,
-      "deliveryFee": 20,
-      "products": [
-        {
-          "id": "salad",
-          "amount": 2,
-          "price": 18,
-          "priceSingle": 9,
-          "name": "Nonno Alberto's Salad",
-          "params": {
-            "ingredients": {
-              "label": "Ingredients",
-              "options": {
-                "cucumber": "Cucumber",
-                "tomatoes": "Tomatoes",
-                "olives": "Olives",
-                "herbs": "Fresh herbs"
-              }
-            }
-          }
-        }
-      ],
-      "id": 3
-    },
-    {
-      "address": null,
-      "phone": {},
-      "totalPrice": 29,
-      "subtotalPrice": 9,
-      "totalNumber": 1,
-      "deliveryFee": 20,
-      "products": [
-        {
-          "id": "breakfast",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9,
-          "name": "Zia Giulia's Breakfast",
-          "params": {
-            "coffee": {
-              "label": "Coffee type",
-              "options": {
-                "latte": "Latte"
-              }
-            }
-          }
-        }
-      ],
-      "id": 4
-    },
-    {
-      "address": null,
-      "phone": {},
-      "totalPrice": 29,
-      "subtotalPrice": 9,
-      "totalNumber": 1,
-      "deliveryFee": 20,
-      "products": [
-        {
-          "id": "breakfast",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9,
-          "name": "Zia Giulia's Breakfast",
-          "params": {
-            "coffee": {
-              "label": "Coffee type",
-              "options": {
-                "latte": "Latte"
-              }
-            }
-          }
-        }
-      ],
-      "id": 5
     }
   ]
 }
