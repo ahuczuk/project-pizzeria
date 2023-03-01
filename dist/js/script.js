@@ -201,13 +201,18 @@
       }
       // update calculated price in the HTML
       thisProduct.priceSingle = price;
+      price = price * thisProduct.amountWidget.value;
       thisProduct.priceElem.innerHTML = price;
+
     }
 
     initAmountWidget() {
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function () {
+        thisProduct.processOrder();
+      });
     }
 
     addToCart() {
@@ -253,7 +258,8 @@
     constructor(element) {
       const thisWidget = this;
       thisWidget.getElements(element);
-      thisWidget.setValue(settings.amountWidget.defaultValue);
+      thisWidget.value = settings.amountWidget.defaultValue;
+      thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
     }
 
@@ -327,6 +333,8 @@
       thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(select.cart.totalPrice);
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
       thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
+      thisCart.dom.adress = thisCart.dom.wrapper.querySelector(select.cart.adress);
+      thisCart.dom.phone = thisCart.dom.wrapper.querySelector(select.cart.phone);
     }
 
     initActions() {
@@ -346,6 +354,7 @@
       thisCart.dom.form.addEventListener('submit', function (event) {
         event.preventDefault();
         thisCart.sendOrder();
+
       });
 
     }
@@ -404,11 +413,12 @@
 
     sendOrder() {
       const thisCart = this;
+
       const url = settings.db.url + '/' + settings.db.orders;
 
       const payload = {
-        address: thisCart.dom.address.value,
-        phone: thisCart.dom.phone.value,
+        address: thisCart.dom.adress,
+        phone: thisCart.dom.phone,
         totalPrice: thisCart.totalPrice,
         subtotalPrice: thisCart.subtotalPrice,
         totalNumber: thisCart.totalNumber,
@@ -420,6 +430,20 @@
         payload.products.push(prod.getData());
       }
 
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+
+      fetch(url, options)
+        .then(function (response) {
+          return response.json();
+        }).then(function (parsedResponse) {
+          console.log('parsedResponse', parsedResponse);
+        });
     }
   }
 
@@ -471,47 +495,32 @@
 
     initActions() {
       const thisCartProduct = this;
-      thisCartProduct.dom.edit.addEventListener('click', function () {
+      thisCartProduct.dom.edit.addEventListener('click', function (event) {
         event.preventDefault();
       });
-      thisCartProduct.dom.remove.addEventListener('click', function () {
+      thisCartProduct.dom.remove.addEventListener('click', function (event) {
         event.preventDefault();
         thisCartProduct.remove();
       });
     }
 
-    sendOrder() {
-      const thisCart = this;
-      const url = settings.db.url + '/' + settings.db.orders;
-      const payload = {
-        address: thisCart.dom.address.value,
-        phone: thisCart.dom.phone.value,
-        totalPrice: thisCart.totalPrice,
-        subtotalPrice: thisCart.totalPrice - thisCart.deliveryFee,
-        totalNumber: thisCart.totalNumber,
-        deliveryFee: thisCart.deliveryFee,
-        products: [],
-      };
-      for (let prod of thisCart.products) {
-        payload.products.push(prod.getData());
-      }
-      console.log('payload', payload);
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      };
-      fetch(url, options)
-        .then(function (response) {
-          return response.json();
-        }).then(function (parsedResponse) {
-          console.log('parsedResponse', parsedResponse);
-        });
 
+
+    getData() {
+      const thisCartProduct = this;
+
+      const getDataProducts = {
+        id: thisCartProduct.id,
+        amount: thisCartProduct.amount,
+        price: thisCartProduct.price,
+        priceSingle: thisCartProduct.priceSingle,
+        name: thisCartProduct.name,
+        params: thisCartProduct.params
+      };
+      return getDataProducts;
     }
   }
+
 
   const app = {
     initMenu: function () {
