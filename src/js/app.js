@@ -5,14 +5,7 @@ import Booking from './components/Booking.js';
 
 
 const app = {
-
-  initBooking: function(){
-    const thisApp = this;
-
-    thisApp.bookingContainer = document.querySelector(select.containerOf.booking);
-    new Booking(thisApp.bookingContainer);
-  },
-
+  
   initPages: function(){
     const thisApp = this;
 
@@ -22,7 +15,6 @@ const app = {
 
     const idFromHash = window.location.hash.replace('#/', '');
   
-
     let pageMatchingHash = thisApp.pages[0].id;
 
     for(let page of thisApp.pages){
@@ -82,6 +74,17 @@ const app = {
     }
   },
 
+  
+  initBooking: function(){
+    const thisApp = this;
+
+    thisApp.bookingContainer = document.querySelector(select.containerOf.booking);
+    new Booking (thisApp.bookingContainer);
+  },
+
+
+
+
   initCart: function () {
     const thisApp = this;
     const cartElem = document.querySelector(select.containerOf.cart);
@@ -99,7 +102,7 @@ const app = {
     const thisApp = this;
     thisApp.data = {};
 
-    const url = settings.db.url + '/' + settings.db.products;
+    const url = settings.db.url + '/' + settings.db.product;
 
     fetch(url)
       .then(function (rawResponse) {
