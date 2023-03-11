@@ -95,6 +95,7 @@ export const classNames = {
   // CODE ADDED END
 };
 
+
 export const settings = {
   amountWidget: {
     defaultValue: 1,
@@ -106,17 +107,7 @@ export const settings = {
     defaultDeliveryFee: 20,
   },
   // CODE ADDED END
-  db: {
-    url: '//localhost:3131',
-    product: 'product',
-    order: 'order',
-    booking: 'booking',
-    event: 'event',
-    dateStartParamKey: 'date_gte',
-    dateEndParamKey: 'date_lte',
-    notRepeatParam: 'repeat=false',
-    repeatParam: 'repeat_ne=false',
-  },
+ 
   hours: {
     open: 12,
     close: 24,
@@ -126,6 +117,19 @@ export const settings = {
   },
   booking: {
     tableIdAttribute: 'data-table',
+  },
+  db: {
+    product: 'product',
+    orders: 'orders',
+    url: '//localhost:3131',
+    products: 'products',
+    order: 'order',
+    booking: 'booking',
+    event: 'event',
+    dateStartParamKey: 'date_gte',
+    dateEndParamKey: 'date_lte',
+    notRepeatParam: 'repeat=false',
+    repeatParam: 'repeat_ne=false',
   },
 };
 

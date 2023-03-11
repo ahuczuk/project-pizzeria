@@ -92,7 +92,7 @@ const app = {
 
     thisApp.productList = document.querySelector(select.containerOf.menu);
     thisApp.productList.addEventListener('add-to-cart', function(event){
-      app.cart.add(event.detail.product);
+      app.cart.add(event.detail.products);
       console.log('event:', event);
     });
 
@@ -102,7 +102,7 @@ const app = {
     const thisApp = this;
     thisApp.data = {};
 
-    const url = settings.db.url + '/' + settings.db.product;
+    const url = settings.db.url + '/' + settings.db.products;
 
     fetch(url)
       .then(function (rawResponse) {
