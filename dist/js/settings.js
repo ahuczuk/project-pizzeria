@@ -85,7 +85,9 @@ export const classNames = {
   booking: {
     loading: 'loading',
     tableBooked: 'booked',
+    tableSelected: 'selected',
   },
+ 
   nav: {
     active: 'active',
   },
@@ -123,8 +125,8 @@ export const settings = {
     url: '//localhost:3131',
     products: 'products',
     order: 'order',
-    booking: 'booking',
-    event: 'event',
+    booking: 'bookings',
+    event: 'events',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',
